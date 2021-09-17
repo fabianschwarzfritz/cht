@@ -1,7 +1,11 @@
 #/usr/bin/env bash
 
-set -e
 set -u
+
+for d in "echo" "read" "printf" "grep" "curl" "fzf" "tr"; do
+  which "$d" &> /dev/null || echo "$d is required to run this script. This
+  script might crash without this installed!"
+done
 
 languages=`echo "nodejs js ts bash" | tr ' ' '\n'`
 core_utils=`echo "xargs find mv sed awk" | tr ' ' '\n'`
